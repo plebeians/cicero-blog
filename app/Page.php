@@ -19,4 +19,14 @@ class Page extends Model
         'seo_keywords',
         'title',
     ];
+
+    /**
+     * Get the value of the model's route key.
+     *
+     * @return mixed
+     */
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
 }
