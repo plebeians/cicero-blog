@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -13,7 +14,10 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('page.index');
+        $pages = Page::paginate(15);
+        return view('page.index', [
+            'pages' => $pages
+        ]);
     }
 
     /**
@@ -43,9 +47,12 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        return view('page.show');
+        $page = Page::where('slug', $slug)->firstOrFail();
+        return view('page.show', [
+            'page' => $page
+        ]);
     }
 
     /**

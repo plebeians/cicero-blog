@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
-        show page
+        <h1>{{$page->title}}</h1>
+        <p>{{$page->text}}</p>
     </div>
 @endsection
