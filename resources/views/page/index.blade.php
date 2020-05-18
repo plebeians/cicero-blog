@@ -4,12 +4,16 @@
     <div class="container">
         <div class="row">
         @foreach($pages as $page)
-            <div class="col-6 mb-4">
+            <div class="col-6 mb-4 d-flex">
                 <div class="card">
-                    <img src="https://picsum.photos/1920/1080" class="card-img-top" alt="...">
+                    @if($page->thumb)
+                        <img src="{{$page->thumb}}" class="card-img-top" alt="{{$page->title}}">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">{{$page->title}}</h5>
                         <p class="card-text">{{$page->description}}</p>
+                    </div>
+                    <div class="card-footer text-right bg-white">
                         <a href="{{route('pages.show', $page)}}" class="btn btn-primary">подробнее</a>
                     </div>
                 </div>

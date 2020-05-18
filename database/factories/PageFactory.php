@@ -16,3 +16,7 @@ $factory->define(Page::class, function (Faker $faker) {
         'title' => $faker->text(70),
     ];
 });
+
+$factory->afterCreating(Page::class, function ($page, Faker $faker) {
+    $page->addMediaFromUrl('https://picsum.photos/1920/1080')->toMediaCollection('thumb');
+});
