@@ -18,5 +18,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::middleware(['dashboard-access'])->group(function() {
     Route::get('/dashboard', 'Dashboard\HomeController@index')->name('dashboard.home');
+    Route::get('/dashboard/pages', 'Dashboard\PageController@index')->name('dashboard.pages.index');
+    Route::delete('/dashboard/pages/{page}/destroy', 'Dashboard\PageController@destroy')->name('dashboard.pages.destroy');
 });
 Route::resource('pages', 'PageController');
