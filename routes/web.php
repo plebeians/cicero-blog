@@ -16,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::middleware(['dashboard-access'])->group(function() {
+    Route::get('/dashboard', 'Dashboard\HomeController@index')->name('dashboard.home');
+});
 Route::resource('pages', 'PageController');
