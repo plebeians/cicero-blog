@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }} Dashboard
                 </a>
@@ -71,10 +71,24 @@
                 </div>
             </div>
         </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 border-right min-vh-100 shadow">
+                    <ul class="nav flex-column ">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{route('dashboard.home')}}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('dashboard.pages.index')}}">Pages</a>
+                        </li>
+                    </ul>
+                </div>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+                <main class="col-10 pt-4">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
     </div>
 </body>
 </html>
